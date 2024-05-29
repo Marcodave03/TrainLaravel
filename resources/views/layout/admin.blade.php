@@ -177,7 +177,7 @@
           <img src="" style="overflow:hidden; height:40px; width :35px;" class="img-circle elevation-1" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{Auth::user()->name}}</a>
+          <a href="#" class="d-block">Username</a>
         </div>
       </div>
 
