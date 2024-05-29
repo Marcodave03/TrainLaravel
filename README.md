@@ -25,6 +25,7 @@ npm install bootstrap --class=[class]
 composer require barryvdh/laravel-dompdf ## untuk download pdf
 composer require maatwebsite/excel
 php artisan make:export EmployeeExport --model=Employee
+php artisan make:import --model=Employee
 
 
 
