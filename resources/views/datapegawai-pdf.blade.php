@@ -33,19 +33,23 @@
 <table id="customers">
   <tr>
     <th>No</th>
+    <th>ID</th>
     <th>Nama</th>
     <th>Jenis Kelamin</th>
     <th>No telp</th>
+    <th>Date</th>
   </tr>
   @php
     $no=1;
   @endphp
   @foreach ($data as $row )
   <tr>
-    <td>{{$no++}}</td>
+    <th scope="row">{{$no++}}</th>
+    <th scope="row">{{$row->id}}</th>
     <td>{{$row->nama}}</td>
     <td>{{$row->jeniskelamin}}</td>
     <td>{{$row->notelpon}}</td>
+    <td>{{$row->created_at->format('D M Y')}}</td>
   </tr>
   @endforeach
 

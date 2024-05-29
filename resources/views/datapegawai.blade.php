@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>CRUD LARAVEL</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />  
     {{-- toastr css --}}
   </head>
   <body>
@@ -34,7 +34,8 @@
             <table class="table">
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
+                    <th scope="col">no</th>
+                    <th scope="col">ID</th>
                     <th scope="col">Nama</th>
                     <th scope="col">Foto</th>
                     <th scope="col">Jenis Kelamin</th>
@@ -50,9 +51,10 @@
                         $no=1;
                     @endphp
                     
-                    @foreach ($data as $row)
+                    @foreach ($data as $index => $row)
                         <tr>
-                            <th scope="row">{{$no++}}</th>
+                            <th scope="row">{{$index + $data->firstItem()}}</th>
+                            <th scope="row">{{$row->id}}</th>
                             <td>{{$row->nama}}</td>
                             <td>
                               <img src="{{asset('fotopegawai/'.$row->foto)}}" style="width:40px" alt="">
@@ -68,9 +70,9 @@
                             {{-- /delete/{{$row->id}} --}}
                         </tr>
                     @endforeach
-                  
                 </tbody>
               </table>
+              {{ $data->links() }}
         </div>
     </div>
     
@@ -79,7 +81,7 @@
     {{-- sweetalert --}}
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     {{-- jquery --}}
-    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     {{-- toastr --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
@@ -90,7 +92,7 @@
       var nama=$(this).attr('data-nama');
       swal({
         title: "Yakin ?",
-        text: "Kamu akan menghapus data pegawai dengan nama "+nama+" ",
+        text: "Kamu akan menghapus data pegawai dengan nama "+nama+" "+"dengan id "+pegawaiid,
         icon: "warning",
         buttons: true,
         dangerMode: true,

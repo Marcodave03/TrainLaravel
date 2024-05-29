@@ -12,12 +12,12 @@ class EmployeeController extends Controller
 {
     public function index(Request $request){
         //$data = Employee::all(); // panggil database
-        if($request->has('search')){
-            $data = Employee::where('nama','LIKE','%' .$request->search.'%')->paginate(5);
+        if($request->has('search')){ // untuk search
+            $data = Employee::where('nama','LIKE','%' .$request->search.'%')->paginate(8);
         }else{
-            $data = Employee::paginate(5); // panggil database
+            $data = Employee::paginate(8); // panggil database
         }
-    
+         
         //dd($data); //ngepin data sblm tampil ke website
         return view('datapegawai',compact('data'));
     }

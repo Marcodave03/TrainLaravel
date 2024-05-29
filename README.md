@@ -1,3 +1,33 @@
+### Run
+php artisan serve
+npm run dev 
+
+### Clone Laravel
+composer update
+npm install --save-dev
+
+### CSS
+npm install bootstrap
+
+### SweetAlert
+npm install sweetalert --save
+
+### Database
+php artisan storage:link ( for image )
+php artisan migrate
+php artisan migrate:fresh
+php artisan migrate:fresh --seed
+php artisan make:model [model]
+php artisan make:seed [seed]
+npm install bootstrap --class=[class]
+
+### install
+composer require barryvdh/laravel-dompdf ## untuk download pdf
+composer require maatwebsite/excel
+php artisan make:export EmployeeExport --model=Employee
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
