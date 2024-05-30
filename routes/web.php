@@ -3,6 +3,7 @@
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\LoginController;
 use App\Models\Employee;
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
 
@@ -24,8 +25,12 @@ Route::get('/', function () {
     return view('welcome',compact('jumlahpegawai','cowo','cewe'));
 })->middleware('auth');;
 
+Route::group(['middleware' => ['auth','hakakses:admin,user']],function(){
+    Route::get('/pegawai',[EmployeeController::class,'index'])->name('pegawai')->middleware('auth');
+});
 
-Route::get('/pegawai',[EmployeeController::class,'index'])->name('pegawai')->middleware('auth');
+
+//Route::get('/pegawai',[EmployeeController::class,'index'])->name('pegawai')->middleware('auth');
 Route::get('/tambahpegawai',[EmployeeController::class,'tambahpegawai'])->name('tambahpegawai');
 
 //insert database
