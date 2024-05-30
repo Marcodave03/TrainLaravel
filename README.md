@@ -1,3 +1,4 @@
+Nonton ini -> https://www.youtube.com/watch?v=fX8oar09o6E&list=PLhWDv4Vma6HsSDRgg9PCCJT2CksdydqH8&index=21
 ### Run
 php artisan serve
 npm run dev 
