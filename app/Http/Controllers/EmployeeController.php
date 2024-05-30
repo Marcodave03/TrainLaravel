@@ -67,7 +67,7 @@ class EmployeeController extends Controller
         return Excel::download(new EmployeeExport,'datapegawai.xlsx');
     }
 
-    public function  importexcel(Request $request){
+    public function importexcel(Request $request){
         $data = $request->file('file');
         $namafile = $data->getClientOriginalName();
         $data->move('EmployeeData',$namafile);

@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\LoginController;
+use App\Models\Employee;
 use Illuminate\Support\Facades\Route;
 
 
@@ -16,11 +18,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    $jumlahpegawai = Employee::count();
+    $cowo = Employee::where('jeniskelamin','cowo')->count();
+    $cewe= Employee::where('jeniskelamin','cewe')->count();
+    return view('welcome',compact('jumlahpegawai','cowo','cewe'));
+})->middleware('auth');;
 
 
-Route::get('/pegawai',[EmployeeController::class,'index'])->name('pegawai');
+Route::get('/pegawai',[EmployeeController::class,'index'])->name('pegawai')->middleware('auth');
 Route::get('/tambahpegawai',[EmployeeController::class,'tambahpegawai'])->name('tambahpegawai');
 
 //insert database
@@ -41,3 +46,6 @@ Route::get('/exportexcel',[EmployeeController::class,'exportexcel'])->name('expo
 
 //Import Excel
 Route::post('/importexcel',[EmployeeController::class,'importexcel'])->name('importexcel');
+
+
+
